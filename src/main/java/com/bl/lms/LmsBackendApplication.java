@@ -1,4 +1,4 @@
-package com.lms.backend;
+package com.bl.lms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
