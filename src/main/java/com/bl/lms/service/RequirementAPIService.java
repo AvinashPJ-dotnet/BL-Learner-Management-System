@@ -1,4 +1,4 @@
-package com.lms.backend.service;
+package com.bl.lms.service;
 
 public class RequirementAPIService {
 

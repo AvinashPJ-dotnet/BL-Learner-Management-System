@@ -1,4 +1,4 @@
-package com.lms.backend.repository;
+package com.bl.lms.repository;
 
 public class RequirementAPIRepository {
 

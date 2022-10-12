@@ -1,4 +1,4 @@
-package com.lms.backend.controller;
+package com.bl.lms.controller;
 
 public class RequirementAPIController {
 

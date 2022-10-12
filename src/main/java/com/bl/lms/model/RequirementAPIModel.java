@@ -1,4 +1,4 @@
-package com.lms.backend.model;
+package com.bl.lms.model;
 
 public class RequirementAPIModel {
 

@@ -1,4 +1,4 @@
-package com.lms.backend.dto;
+package com.bl.lms.dto;
 
 public class RequirementAPIDto {
 
