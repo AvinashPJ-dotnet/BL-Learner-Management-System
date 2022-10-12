@@ -1,6 +1,9 @@
 package com.bl.lms.dto;
 
-public class AdminDTO {
+import lombok.Data;
+
+@Data
+public class UserDTO {
 
 	private String firstName;
 	private String lastName;
@@ -8,4 +11,5 @@ public class AdminDTO {
 	private String mobile;
 	private String profilePath;
 	private String password;
+	private String role;
 }
