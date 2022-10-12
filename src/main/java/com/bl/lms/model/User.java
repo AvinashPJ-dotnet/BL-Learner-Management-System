@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-public class Admin {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +23,5 @@ public class Admin {
 	private String mobile;
 	private String profilePath;
 	private String password;
+	private String role;
 }
