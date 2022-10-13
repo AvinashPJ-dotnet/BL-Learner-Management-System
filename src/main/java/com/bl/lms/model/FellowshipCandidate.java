@@ -1,9 +1,12 @@
 package com.bl.lms.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.ToString;
@@ -11,6 +14,7 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
+@Table(name = "Fellowship_Candidate")
 public class FellowshipCandidate {
 	
 	@Id
@@ -31,10 +35,10 @@ public class FellowshipCandidate {
 	 private String communication_remark;
 	 private String knowledge_remark;
 	 private String aggregate_remark;
-	 private String creator_stamp;
+	 private Date creator_stamp;
 	 private String creator_user;
-	 private String birth_date;
-	 private String is_birth_verified;
+	 private Date birth_date;
+	 private boolean is_birth_verified;
 	 private String parent_name;
 	 private String parent_occupation;
 	 private String parent_mobile_number;
@@ -42,6 +46,6 @@ public class FellowshipCandidate {
 	 private String local_addess;
 	 private String permanent_addess;
 	 private String photo_path;
-	 private String joining_date;
+	 private Date joining_date;
 	 private String candidate_status;
 }
