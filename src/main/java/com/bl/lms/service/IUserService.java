@@ -1,11 +1,17 @@
 package com.bl.lms.service;
 
-import com.bl.lms.dto.UserDTO;
+import javax.mail.MessagingException;
+import com.bl.lms.dto.APIResponse;
+import com.bl.lms.model.User;
 
 public interface IUserService {
 
-	public void signUp(UserDTO user);
+	public APIResponse signUp(User user);
 
+	public String generateOTP(String emailId) throws MessagingException;
 
+	public APIResponse validateOtp(String emailId, int otpnum);
+
+	public APIResponse login(String emailId, String password) throws MessagingException;
 
 }
