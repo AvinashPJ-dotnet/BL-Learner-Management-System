@@ -2,6 +2,7 @@ package com.bl.lms.service.implementation;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,6 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 				if(!proviousCICId.split("CIC")[1].split("-")[0].substring(2).equals(String.valueOf(todayDate.getYear()))) {
 					newCICid="CIC"+""+todayDate.getMonthValue()+""+todayDate.getYear()+"-"+String.valueOf(Integer.parseInt(proviousCICId.split("-")[1])+1);
 				}
-				
 			}
 			else if(!proviousCICId.split("CIC")[1].split("-")[0].substring(2).equals(String.valueOf(todayDate.getYear()))) {
 				newCICid="CIC"+""+todayDate.getMonthValue()+""+todayDate.getYear()+"-"+String.valueOf(Integer.parseInt(proviousCICId.split("-")[1])+1);
@@ -55,11 +55,13 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 			else {
 				newCICid="CIC"+""+proviousCICId.split("CIC")[1].split("-")[0].substring(0,2)+""+proviousCICId.split("CIC")[1].split("-")[0].substring(2)+"-"+String.valueOf(Integer.parseInt(proviousCICId.split("-")[1])+1);
 			}
-			
-			
 		}
 		return newCICid;
+	}
 
+	@Override
+	public APIResponse getCandidateByStatus(String status) {
+		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
 	}
 
 }
