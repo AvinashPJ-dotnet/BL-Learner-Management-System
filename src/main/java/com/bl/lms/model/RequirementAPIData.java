@@ -5,8 +5,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Company_Requirement")
-public @Data class RequirementAPIModel {
+@Table(name = "Requirement")
+public @Data class RequirementAPIData {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
