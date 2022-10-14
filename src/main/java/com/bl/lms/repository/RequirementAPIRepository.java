@@ -1,5 +1,9 @@
 package com.bl.lms.repository;
 
-public class RequirementAPIRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bl.lms.model.RequirementAPIData;
+
+public interface RequirementAPIRepository extends JpaRepository<RequirementAPIData, Long> {
 
 }
