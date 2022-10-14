@@ -8,4 +8,6 @@ import com.bl.lms.model.FellowshipCandidate;
 @Repository
 public interface FellowshipCandidateRepository extends JpaRepository<FellowshipCandidate, Long>  {
 
+	FellowshipCandidate findTopByOrderByIdDesc();
+
 }
