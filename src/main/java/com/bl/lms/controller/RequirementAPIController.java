@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bl.lms.dto.RequirementAPIDto;
 import com.bl.lms.dto.ResponseDTO;
 import com.bl.lms.model.RequirementAPIData;
 import com.bl.lms.service.IRequirementAPIService;
@@ -25,16 +28,24 @@ public class RequirementAPIController {
 
 	@Autowired
 	@GetMapping("/requirement")
-	public List<RequirementAPIData> getRequirementAPIDatas() {
-		List<RequirementAPIData> apiDatas = iRequirementAPIService.getRequirementAPIDatas();
+	public List<RequirementAPIData> viewAllCompanyRequirement() {
+		List<RequirementAPIData> apiDatas = iRequirementAPIService.viewAllCompanyRequirement();
 		return apiDatas;
 	}
 
 	@GetMapping("/requirement/{id}")
-	public ResponseEntity<ResponseDTO> getRequirementAPIDatasById(@PathVariable int id) {
+	public ResponseEntity<ResponseDTO> viewCompanyRequirement(@PathVariable int id) {
 		List<RequirementAPIData> apiDatas = null;
-		apiDatas = (List<RequirementAPIData>) iRequirementAPIService.getRequirementAPIDatasById(id);
+		apiDatas = (List<RequirementAPIData>) iRequirementAPIService.viewCompanyRequirement(id);
 		ResponseDTO response = new ResponseDTO("Get Call for gender Successful", apiDatas);
 		return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
 	}
+	
+	@PostMapping("/requirement")
+    public ResponseEntity<ResponseDTO> newCompanyRequirement(@RequestBody RequirementAPIDto requirementAPIDto){
+		RequirementAPIData requirementAPIData=null;
+		requirementAPIData = iRequirementAPIService.newCompanyRequirement(requirementAPIDto);
+        ResponseDTO responseDTO = new ResponseDTO("Add Company requirement with multiple techrequirement:", requirementAPIData);
+        return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+    }
 }
