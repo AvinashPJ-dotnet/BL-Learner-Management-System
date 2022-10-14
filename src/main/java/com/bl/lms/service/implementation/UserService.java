@@ -12,8 +12,9 @@ import com.bl.lms.model.User;
 import com.bl.lms.repository.UserRepository;
 import com.bl.lms.service.interfaces.IUserService;
 import com.bl.lms.utils.EmailSenderService;
+import com.bl.lms.utils.JWTUtil;
 import com.bl.lms.utils.OTPService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Service
 public class UserService implements IUserService {
@@ -29,6 +30,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	OTPService otpService;
+	
+	@Autowired
+	JWTUtil jwtUtil;
 
 	public UserDTO convertUserEntityToDTO(User user) {
 		UserDTO userDTO = new UserDTO();
@@ -62,13 +66,14 @@ public class UserService implements IUserService {
 	public APIResponse validateOtp(String emailId, int otpnum) {
 		final String SUCCESS = "Entered Otp is valid";
 		final String FAIL = "Entered Otp is NOT valid. Please Retry!";
+		User user = userRepo.findByEmailId(emailId).get();
 		if (otpnum >= 0) {
 
 			int serverOtp = otpService.getOtp(emailId);
 			if (serverOtp > 0) {
 				if (otpnum == serverOtp) {
 					otpService.clearOTP(emailId);
-					return new APIResponse(HttpStatus.OK.value(), SUCCESS);
+					return new APIResponse(HttpStatus.OK.value(), SUCCESS,jwtUtil.generateJWT(user));
 				} else {
 					return new APIResponse(HttpStatus.OK.value(), FAIL);
 				}

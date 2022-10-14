@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bl.lms.dto.RequirementAPIDto;
 import com.bl.lms.model.RequirementAPIData;
 import com.bl.lms.repository.RequirementAPIRepository;
 
+@Service
 public class RequirementAPIService implements IRequirementAPIService {
 
 	@Autowired
