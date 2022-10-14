@@ -5,6 +5,7 @@ import lombok.Data;
  @Data 
  public class ResponseDTO {
 
+
 	private String message;
 	private Object data;
 
@@ -12,4 +13,9 @@ import lombok.Data;
 		this.message = string;
 		this.data = payrollData;
 	}
+
+
+
+
+
 }
