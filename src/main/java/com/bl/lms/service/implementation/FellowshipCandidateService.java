@@ -26,7 +26,7 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate) {
 		// TODO Auto-generated method stub
 		FellowshipCandidate newFellowshipCandidate = this.mapper.map(hiringCandidate, FellowshipCandidate.class);
-		newFellowshipCandidate.setCic_id(this.generateCICId());
+		newFellowshipCandidate.setCicId(this.generateCICId());
 		fellowshipCandidateRepo.save(newFellowshipCandidate);
 		return new APIResponse(200, "added successful", fellowshipCandidateRepo.save(newFellowshipCandidate));
 	}
@@ -38,7 +38,7 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 		//get year from CIC id= newCICid.split("CIC")[1].split("-")[0].substring(2)
 		String newCICid="";
 		LocalDate todayDate = LocalDate.now();
-		String proviousCICId = fellowshipCandidateRepo.findTopByOrderByIdDesc().getCic_id();
+		String proviousCICId = fellowshipCandidateRepo.findTopByOrderByIdDesc().getCicId();
 		if (proviousCICId.isEmpty() | proviousCICId == null) {
 			newCICid="CIC"+""+todayDate.getMonthValue()+""+todayDate.getYear()+"-1";
 		}
