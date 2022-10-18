@@ -26,6 +26,7 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate) {
 		FellowshipCandidate newFellowshipCandidate = this.mapper.map(hiringCandidate, FellowshipCandidate.class);
 		newFellowshipCandidate.setCicId(this.generateCICId());
+		newFellowshipCandidate.setDocumentStatus("pending");
 		fellowshipCandidateRepo.save(newFellowshipCandidate);
 		return new APIResponse(200, "added successful", fellowshipCandidateRepo.save(newFellowshipCandidate));
 	}
@@ -58,9 +59,10 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 		return newCICid;
 	}
 
-//	@Override
-//	public APIResponse getCandidateByStatus(String status) {
-//		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
-//	}
+
+	@Override
+	public APIResponse getCandidateByStatus(String status) {
+		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
+	}
 
 }
