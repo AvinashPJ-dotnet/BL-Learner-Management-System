@@ -20,10 +20,6 @@ import com.bl.lms.service.interfaces.IFellowshipCandidateService;
 @RestController
 @RequestMapping("/onboarding")
 public class OnboardController {
-<<<<<<< HEAD
-	
-=======
->>>>>>> Onboarding_Module_Update_Model_001
 	@Autowired
 	IFellowshipCandidateService fellowshipService;
 	@Autowired
