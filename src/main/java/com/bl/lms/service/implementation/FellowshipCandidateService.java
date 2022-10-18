@@ -27,6 +27,7 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 		// TODO Auto-generated method stub
 		FellowshipCandidate newFellowshipCandidate = this.mapper.map(hiringCandidate, FellowshipCandidate.class);
 		newFellowshipCandidate.setCicId(this.generateCICId());
+		newFellowshipCandidate.setDocumentStatus("pending");
 		fellowshipCandidateRepo.save(newFellowshipCandidate);
 		return new APIResponse(200, "added successful", fellowshipCandidateRepo.save(newFellowshipCandidate));
 	}

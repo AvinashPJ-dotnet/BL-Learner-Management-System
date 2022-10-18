@@ -1,5 +1,6 @@
 package com.bl.lms.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +14,7 @@ public interface FellowshipCandidateRepository extends JpaRepository<FellowshipC
 
 	FellowshipCandidate findTopByOrderByIdDesc();
 
-	@Query("SELECT * FROM Fellowship_Candidate WHERE candidate_status = ?1")
-	List<FellowshipCandidate> findByCandidateStatus(String status);
+	@Query(value = "SELECT fc FROM FellowshipCandidate fc WHERE fc.candidateStatus = ?1")
+	Collection<FellowshipCandidate> findByCandidateStatus(String status);
 
 }

@@ -1,9 +1,12 @@
 package com.bl.lms.service.implementation;
 
+import org.springframework.stereotype.Service;
+
 import com.bl.lms.dto.APIResponse;
 import com.bl.lms.dto.CandidateBankDetailsDTO;
 import com.bl.lms.service.interfaces.ICandidateBankDetailsService;
 
+@Service
 public class CandidateBankDetailsService implements ICandidateBankDetailsService {
 
 	@Override

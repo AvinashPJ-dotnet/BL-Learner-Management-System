@@ -20,7 +20,6 @@ public class EmailSenderService {
 	public void sendOtpMessage(User user, int OTP) throws MessagingException {
 	
 		MimeMessage message = javaMailSender.createMimeMessage();
-
 	        MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
 	        helper.setTo(user.getEmailId());
@@ -35,8 +34,8 @@ public class EmailSenderService {
 	                + "<br>"
 	                + "<p>Note: this OTP is set to expire in 5 minutes.</p>";
 	        helper.setText(content, true);
-
 	        javaMailSender.send(message);
+	       
    }
 	
 	
