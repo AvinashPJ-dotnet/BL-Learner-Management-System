@@ -32,6 +32,9 @@ public class HiringCandidateService implements IHiringCandidateService {
 
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	FellowshipCandidateService fcService;
 
 	@Autowired
 	JWTUtil jwtUtil;
@@ -64,6 +67,7 @@ public class HiringCandidateService implements IHiringCandidateService {
 		hiringCandidate.setCreatorUser(userRepo.findByEmailId(emailId).get().getId());
 		hiringCandidate.setCreatorStamp(LocalDateTime.now());
 		hiringCandidateRepo.save(hiringCandidate);
+		fcService.addFellowshipCandidate(hiringCandidate);
 		return new APIResponse(HttpStatus.OK.value(), "Hired Candidate details added Successfully", hiringCandidate);
 	}
 

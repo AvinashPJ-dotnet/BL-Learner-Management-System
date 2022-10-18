@@ -9,19 +9,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QualificationDetailsDTO {
 	private boolean diploma;
-	private String degree_name;
-	private boolean is_degree_name_verified; 
-	private String employee_decipline;
-	private boolean is_employee_decipline_verified;
-	private int passing_year;
-	private boolean is_passing_year_verified;
-	private float aggr_per;
-	private String final_year_per;
-	private boolean is_final_year_per_verified;
-	private String training_institute;
-	private boolean is_training_institute_verified;
-	private String training_duration_month;
-	private boolean is_training_duration_month_verified;
-	private String other_training;
-	private boolean is_other_training_verified;
+	private String degree;
+	private boolean isDegreeNameVerified; 
+	private String employeeDecipline;
+	private boolean isEmployeeDeciplineVerified;
+	private int passingYear;
+	private boolean isPassingYearVerified;
+	private float aggregatePercentage;
+	private String finalYearPer;
+	private boolean isFinalYearPerVerified;
+	private String trainingInstitute;
+	private boolean isTrainingInstituteVerified;
+	private String trainingDurationMonth;
+	private boolean isTrainingDurationMonthVerified;
+	private String otherTraining;
+	private boolean isOtherTrainingVerified;
 }

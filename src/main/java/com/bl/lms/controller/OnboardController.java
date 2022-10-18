@@ -27,11 +27,11 @@ public class OnboardController {
 	@Autowired
 	ICandidateQualificationService qualificationService;
 
-//	@GetMapping("/candidates/status/{status}")
-//	public APIResponse getAllCandidatesByStatus(@PathVariable("status") String status) {
-//		return fellowshipService.getCandidateByStatus(status);
-//
-//	}
+	@GetMapping("/candidates/status/{status}")
+	public APIResponse getAllCandidatesByStatus(@PathVariable("status") String status) {
+		return fellowshipService.getCandidateByStatus(status);
+
+	}
 
 	// add candidate bank details
 	@PostMapping("/candidates/bank/{candidate_id}")

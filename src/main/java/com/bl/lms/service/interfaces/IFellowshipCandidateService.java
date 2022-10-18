@@ -13,5 +13,5 @@ public interface IFellowshipCandidateService {
 
 	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate);
 
-//	public APIResponse getCandidateByStatus(String status);
+	public APIResponse getCandidateByStatus(String status);
 }
