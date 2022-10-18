@@ -24,7 +24,6 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 
 	@Override
 	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate) {
-		// TODO Auto-generated method stub
 		FellowshipCandidate newFellowshipCandidate = this.mapper.map(hiringCandidate, FellowshipCandidate.class);
 		newFellowshipCandidate.setCic_id(this.generateCICId());
 		fellowshipCandidateRepo.save(newFellowshipCandidate);
@@ -59,9 +58,9 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 		return newCICid;
 	}
 
-	@Override
-	public APIResponse getCandidateByStatus(String status) {
-		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
-	}
+//	@Override
+//	public APIResponse getCandidateByStatus(String status) {
+//		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
+//	}
 
 }

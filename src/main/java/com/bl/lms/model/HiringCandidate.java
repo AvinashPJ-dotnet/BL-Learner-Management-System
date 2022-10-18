@@ -7,12 +7,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 public class HiringCandidate {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id; 
@@ -28,7 +36,7 @@ public class HiringCandidate {
 	private String attitudeRemark;
 	private String communicationRemark;
 	private String knowledgeRemark;
-	private String onboardingStatus;
+//	private String onboardingStatus;
 	private String status;  
 	private String joinDate;
 	private double aggregatePercentage;
