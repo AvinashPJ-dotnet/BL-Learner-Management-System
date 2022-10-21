@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bl.lms.model.FellowshipCandidate;
 
 @Repository
-public interface FellowshipCandidateRepository extends JpaRepository<FellowshipCandidate, Long>  {
+public interface FellowshipCandidateRepository extends JpaRepository<FellowshipCandidate, String>  {
 
 	Optional<FellowshipCandidate> findTopByOrderByCicIdDesc();
 

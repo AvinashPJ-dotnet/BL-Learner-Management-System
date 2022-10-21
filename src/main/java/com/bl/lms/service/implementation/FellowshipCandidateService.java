@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bl.lms.dto.APIResponse;
+import com.bl.lms.exception.UserException;
 import com.bl.lms.model.CandidateBankDetails;
 import com.bl.lms.model.CandidateQualification;
 import com.bl.lms.model.FellowshipCandidate;
@@ -18,6 +19,7 @@ import com.bl.lms.repository.CandidateBankDetailsRepository;
 import com.bl.lms.repository.CandidateQualificationRepository;
 import com.bl.lms.repository.FellowshipCandidateRepository;
 import com.bl.lms.service.interfaces.IFellowshipCandidateService;
+import com.bl.lms.utils.JWTUtil;
 
 @Service
 public class FellowshipCandidateService implements IFellowshipCandidateService {
@@ -37,9 +39,13 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 
 	@Autowired
 	ModelMapper mapper;
+	
+	@Autowired
+	JWTUtil jwtUtil;
 
 	@Override
-	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate) {
+	public APIResponse addFellowshipCandidate(String token,HiringCandidate hiringCandidate) {
+		jwtUtil.verify(token);
 		FellowshipCandidate newFellowshipCandidate = this.mapper.map(hiringCandidate, FellowshipCandidate.class);
 		System.out.println("pass1" + newFellowshipCandidate.getDegree());
 		newFellowshipCandidate.setCicId(this.generateCICId());
@@ -52,10 +58,11 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 		System.out.println("pass3");
 		this.addCandidatebankDetails(newFellowshipCandidate);
 		System.out.println("pass4");
-		return new APIResponse(200, "added successful", newFellowshipCandidate);
+		return new APIResponse(201, "added successful", newFellowshipCandidate);
 	}
 
 	private void addCandidateQualification(FellowshipCandidate fellowshipCandidate) {
+		
 		candidateQualification.setDegree(fellowshipCandidate.getDegree());
 		candidateQualification.setFc(fellowshipCandidate);
 		qualificationRepo.save(candidateQualification);
@@ -105,8 +112,27 @@ public class FellowshipCandidateService implements IFellowshipCandidateService {
 	}
 
 	@Override
-	public APIResponse getCandidateByStatus(String status) {
+	public APIResponse getCandidateByStatus(String token,String status) {
 		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status));
+	}
+
+	@Override
+	public APIResponse updateCandidateStatus(String token, String candidateId, String status) {
+		jwtUtil.verify(token);
+		Optional<FellowshipCandidate> candidate=fellowshipCandidateRepo.findById(candidateId);
+		if(candidate.isEmpty()) {
+			throw new UserException("candidate not found");
+		}
+		FellowshipCandidate updatedCandidate = candidate.get();
+		updatedCandidate.setCandidateStatus(status);
+		updatedCandidate = fellowshipCandidateRepo.save(updatedCandidate);
+		return new APIResponse(200, "successful", updatedCandidate);
+	}
+
+	@Override
+	public APIResponse countCandidatesByStatus(String token, String status) {
+		jwtUtil.verify(token);
+		return new APIResponse(200, "successful", fellowshipCandidateRepo.findByCandidateStatus(status).stream().count());
 	}
 
 }
