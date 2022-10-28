@@ -37,7 +37,7 @@ public class RequirementAPIController {
 	public ResponseEntity<ResponseDTO> viewCompanyRequirement(@PathVariable int id) {
 		List<RequirementAPIData> apiDatas = null;
 		apiDatas = (List<RequirementAPIData>) iRequirementAPIService.viewCompanyRequirement(id);
-		ResponseDTO response = new ResponseDTO("Get Call for gender Successful", apiDatas);
+		ResponseDTO response = new ResponseDTO("Get Call for id Successful", apiDatas);
 		return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
 	}
 	
