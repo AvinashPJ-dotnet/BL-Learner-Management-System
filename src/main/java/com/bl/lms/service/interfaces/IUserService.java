@@ -1,4 +1,4 @@
-package com.bl.lms.service;
+package com.bl.lms.service.interfaces;
 
 import javax.mail.MessagingException;
 import com.bl.lms.dto.APIResponse;

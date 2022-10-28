@@ -1,24 +1,13 @@
-package com.bl.lms.model;
+package com.bl.lms.dto;
 
-import java.sql.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-public class CandidateQualification {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+@NoArgsConstructor
+@AllArgsConstructor
+public class QualificationDetailsDTO {
 	private boolean diploma;
 	private String degree;
 	private boolean isDegreeNameVerified; 
@@ -35,11 +24,4 @@ public class CandidateQualification {
 	private boolean isTrainingDurationMonthVerified;
 	private String otherTraining;
 	private boolean isOtherTrainingVerified;
-	private Date creatorStamp;
-	private long creatorUser;
-	
-	@ManyToOne
-	@JoinColumn(name = "candidateId")
-	FellowshipCandidate fc; 
-	
 }

@@ -17,5 +17,10 @@ public class APIResponse {
 		this.status = status;
 		this.message = message;
 	}
+	
+	public APIResponse(Integer status, Object data) {
+		this.status = status;
+		this.data = data;
+	}
 
 }

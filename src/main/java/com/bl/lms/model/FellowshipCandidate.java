@@ -1,12 +1,13 @@
 package com.bl.lms.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.ToString;
@@ -14,38 +15,64 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
-@Table(name = "Fellowship_Candidate")
 public class FellowshipCandidate {
-	
+
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	 private long id ;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	 private long id ;
-	 private String cic_id;
-	 private String email ;
-	 private String first_name;
-	 private String middle_name;
-	 private String last_name;
-	 private String hired_city;
-	 private String degree;
-	 private String hired_date;
-	 private String hired_lab ;
-	 private String mobile_number;
-	 private String permanent_pincode;
-	 private String attitude;
-	 private String communication_remark;
-	 private String knowledge_remark;
-	 private String aggregate_remark;
-	 private Date creator_stamp;
-	 private String creator_user;
-	 private Date birth_date;
-	 private boolean is_birth_verified;
-	 private String parent_name;
-	 private String parent_occupation;
-	 private String parent_mobile_number;
-	 private String parent_annual_salary;
-	 private String local_addess;
-	 private String permanent_addess;
-	 private String photo_path;
-	 private Date joining_date;
-	 private String candidate_status;
+	private String cicId;
+	private String emailId;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String hiredCity;
+	private String degree;
+	private String hiredDate;
+	private String hiredLab;
+	private String mobileNumber;
+	private String permanentPincode;
+	private String attitudeRemark;
+	private String communicationRemark;
+	private String knowledgeRemark;
+	private String aggregateRemark;
+	private Date creatorStamp;
+	private String creatorUser;
+	private Date birthDate;
+	private boolean isBirthVerified;
+	private String parentName;
+	private String parentOccupation;
+	private String parentMobileNumber;
+	private String parentAnnualSalary;
+	private String localAddess;
+	private String permanentAddess;
+	private String photoPath;
+	private Date joinDate;
+	private String candidateStatus;
+	private String documentStatus;
+//	 private String remark;
+
+//	 private String firstName;
+//	 private String middleName;
+//	 private String lastName;
+//	 private String email;
+//	 private String mobileNumber;
+//	 private String hiredCity;
+//	 private String parentName;
+//	 private String parentMobile;
+//	 private String temporaryAddress;
+//	 private String parentOccupation;
+//	 private String parentAnnualSalary;
+//	 private String permanentAddress;
+//	 private String profileImage;
+//	 private String folderId;
+//	 private String status;
+//	 private String creatorStamp;
+//	 private String updateStamp;
+//	 private String bankInfo;
+//	 private String qualificationInfo;
+
+	public String setCandidateStatus() {
+		return "pending";
+		
+	}
 }

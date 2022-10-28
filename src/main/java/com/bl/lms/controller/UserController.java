@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.bl.lms.dto.UserDTO;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,9 @@ import javax.mail.MessagingException;
 
 import com.bl.lms.dto.APIResponse;
 import com.bl.lms.model.User;
-import com.bl.lms.service.IUserService;
+import com.bl.lms.service.interfaces.IUserService;
+
+
 
 @RestController
 @RequestMapping("/lms")
@@ -46,4 +48,43 @@ public class UserController {
 		return userService.validateOtp(emailId, otpnum);
 	}
 
+//	@PostMapping("/forgot_password")
+//	public String processForgotPassword(String emailId) {
+//	    
+//	    String token = RandomString.make(30);
+//	     
+//	    try {
+//	        userService.updateResetPasswordToken(token, emailId);
+//	        String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+//	        sendEmail(emailId, resetPasswordLink);
+//	        model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
+//	         
+//	    } catch (CustomerNotFoundException ex) {
+//	        model.addAttribute("error", ex.getMessage());
+//	    } catch (UnsupportedEncodingException | MessagingException e) {
+//	        model.addAttribute("error", "Error while sending email");
+//	    }
+//	         
+//	    return "forgot_password_form";
+//	}
+//	
+//	@PostMapping("/reset_password")
+//	public String processResetPassword(HttpServletRequest request, Model model) {
+//	    String token = request.getParameter("token");
+//	    String password = request.getParameter("password");
+//	     
+//	    Customer customer = customerService.getByResetPasswordToken(token);
+//	    model.addAttribute("title", "Reset your password");
+//	     
+//	    if (customer == null) {
+//	        model.addAttribute("message", "Invalid Token");
+//	        return "message";
+//	    } else {           
+//	        customerService.updatePassword(customer, password);
+//	         
+//	        model.addAttribute("message", "You have successfully changed your password.");
+//	    }
+//	     
+//	    return "message";
+//	}
 }

@@ -2,7 +2,9 @@ package com.bl.lms.dto;
 
 import lombok.Data;
 
-public @Data class ResponseDTO {
+ @Data 
+ public class ResponseDTO {
+
 
 	private String message;
 	private Object data;
@@ -11,4 +13,9 @@ public @Data class ResponseDTO {
 		this.message = string;
 		this.data = payrollData;
 	}
+
+
+
+
+
 }
