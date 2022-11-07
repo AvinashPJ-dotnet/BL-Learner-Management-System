@@ -2,7 +2,10 @@ package com.bl.lms.controller;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,7 @@ import com.bl.lms.service.interfaces.IHiringCandidateService;
 
 @RestController
 @RequestMapping("/hiring")
+@CrossOrigin(origins = "http://localhost:3000")
 public class HiringCandidateController {
 	
 	@Autowired
@@ -57,6 +61,11 @@ public class HiringCandidateController {
 	@GetMapping("/candidates")
 	public APIResponse getCandidateListByIDs(@RequestHeader String token, @RequestBody List<Long> idList) {
 		return hiringCandidateService.getCandidateListByIDs(token,idList);
+	}
+	
+	@GetMapping("/resend/{id}/{link}")
+	public APIResponse sendJobOfferNotification(@RequestHeader String token,@PathVariable long id, @PathVariable String link) throws MessagingException {
+		 return hiringCandidateService.sendJobOfferNotification(token,id,link);
 	}
 }
 

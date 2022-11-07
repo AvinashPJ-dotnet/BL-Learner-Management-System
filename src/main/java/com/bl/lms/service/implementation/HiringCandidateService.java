@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.mail.MessagingException;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.bl.lms.model.User;
 import com.bl.lms.repository.HiringCandidateRepository;
 import com.bl.lms.repository.UserRepository;
 import com.bl.lms.service.interfaces.IHiringCandidateService;
+import com.bl.lms.utils.EmailSenderService;
 import com.bl.lms.utils.JWTUtil;
 
 @Service
@@ -38,6 +41,9 @@ public class HiringCandidateService implements IHiringCandidateService {
 
 	@Autowired
 	JWTUtil jwtUtil;
+	
+	@Autowired
+	EmailSenderService emailSenderService;
 
 	@Override
 	public HiringCandidate convertDtoToEntity(HiringCandidateDTO candidateDTO) {
@@ -125,6 +131,14 @@ public class HiringCandidateService implements IHiringCandidateService {
 		jwtUtil.verify(token);
 		List<HiringCandidate> candidates = hiringCandidateRepo.findAllById(idList);
 		return new APIResponse(HttpStatus.OK.value(), candidates);
+	}
+
+	@Override
+	public APIResponse sendJobOfferNotification(String token, long id,String link) throws MessagingException {
+		jwtUtil.verify(token);
+		HiringCandidate candidate = hiringCandidateRepo.findById(id).get();
+        emailSenderService.sendJobOffer(candidate,link);
+		return new APIResponse(HttpStatus.OK.value(),"Email send successfully");
 	}
 
 }

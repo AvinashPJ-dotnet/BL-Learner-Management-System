@@ -2,6 +2,8 @@ package com.bl.lms.service.interfaces;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import com.bl.lms.dto.APIResponse;
 import com.bl.lms.dto.HiringCandidateDTO;
 import com.bl.lms.model.HiringCandidate;
@@ -22,6 +24,8 @@ public interface IHiringCandidateService {
 
 	public APIResponse getCandidateList(String token, String status);
 
-	public APIResponse getCandidateListByIDs(String token, List<Long> idList); 
+	public APIResponse getCandidateListByIDs(String token, List<Long> idList);
+
+	public APIResponse sendJobOfferNotification(String token, long id, String link) throws MessagingException; 
 }
 
