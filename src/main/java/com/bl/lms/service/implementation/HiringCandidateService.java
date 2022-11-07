@@ -73,7 +73,7 @@ public class HiringCandidateService implements IHiringCandidateService {
 		hiringCandidate.setCreatorUser(userRepo.findByEmailId(emailId).get().getId());
 		hiringCandidate.setCreatorStamp(LocalDateTime.now());
 		hiringCandidateRepo.save(hiringCandidate);
-		fcService.addFellowshipCandidate(hiringCandidate);
+		fcService.addFellowshipCandidate(token,hiringCandidate);
 		return new APIResponse(HttpStatus.OK.value(), "Hired Candidate details added Successfully", hiringCandidate);
 	}
 

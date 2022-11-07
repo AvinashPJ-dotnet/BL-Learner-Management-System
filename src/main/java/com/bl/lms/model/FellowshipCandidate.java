@@ -70,4 +70,9 @@ public class FellowshipCandidate {
 //	 private String updateStamp;
 //	 private String bankInfo;
 //	 private String qualificationInfo;
+
+	public String setCandidateStatus() {
+		return "pending";
+		
+	}
 }

@@ -11,7 +11,11 @@ import com.bl.lms.model.HiringCandidate;
 
 public interface IFellowshipCandidateService {
 
-	public APIResponse addFellowshipCandidate(HiringCandidate hiringCandidate);
+	public APIResponse addFellowshipCandidate(String token,HiringCandidate hiringCandidate);
 
-	public APIResponse getCandidateByStatus(String status);
+	public APIResponse getCandidateByStatus(String token,String status);
+
+	public APIResponse updateCandidateStatus(String token, String candidateId, String status);
+
+	public APIResponse countCandidatesByStatus(String token, String status);
 }
